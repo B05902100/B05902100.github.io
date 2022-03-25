@@ -1,0 +1,256 @@
+[
+  {
+    "Type": "half-full",
+    "Name": "Trans-Amazon Drilling Project",
+    "Acronym": "TAMAZON",
+    "Location": "South America, Brazil, Amazon",
+    "Age": "cenozoic",
+    "LatLong": "0.42806 // -49.56111",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2017/01",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Environmental Change",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -5517117.5283,
+        47651.8645
+      ]
+    }
+  },
+  {
+    "Type": "full",
+    "Name": "Drilling the Eger Rift: Magmatic fluids driving the earthquake swarms and the deep biosphere",
+    "Acronym": "EGER",
+    "Location": "Europe, Czechia, Western Bohemia, Eger, Eger Rift",
+    "Age": "cenozoic, paleozoic",
+    "LatLong": "50.07306 // 12.36917",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2016/05",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Geohazards",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1376929.7059,
+        6458938.173
+      ]
+    }
+  },
+  {
+    "Type": "full",
+    "Name": "A Strainmeter Array Along the Alto Tiberina Fault System, Central Italy",
+    "Acronym": "STAR",
+    "Location": "Europe, Italy",
+    "Age": "mid-Paleozoic",
+    "LatLong": "43.374053 // 12.352727",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2017/05",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Geohazards",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1375099.2795,
+        5369080.9477
+      ]
+    }
+  },
+  {
+    "Type": "workshop",
+    "Name": "Deep Drilling in the Turkana Basin Exploring the link between environmental factors and hominin evolution",
+    "Acronym": "DDTB",
+    "Location": "Lake Turkana",
+    "Age": "Pliocene to modern",
+    "LatLong": "4.15311 // 36.052264",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Environmental Change",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4013319.6704,
+        462727.4738
+      ]
+    }
+  },
+  {
+    "Type": "half-full",
+    "Name": "Drilling the Ivrea-Verbano zonE",
+    "Acronym": "DIVE",
+    "Location": "",
+    "Age": "Permian/Pre-Permian Lower Crust",
+    "LatLong": "45.98928 // 8.399",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Geohazards",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        934972.4032,
+        5778631.4991
+      ]
+    }
+  },
+  {
+    "Type": "workshop",
+    "Name": "The Lake Victoria Drilling Project: Unraveling the climate and environmental history of the world’s most populated lake",
+    "Acronym": "LVDP",
+    "Location": "Lake Victoria",
+    "Age": "Holocene, Pleistocene",
+    "LatLong": "-1.217 // 33.183",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Environmental Change",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3693914.663,
+        -135486.0084
+      ]
+    }
+  },
+  {
+    "Type": "half-full",
+    "Name": "Geological Research through Integrated Neoproterozoic Drilling: The Ediacaran-Cambrian Transition",
+    "Acronym": "GRIND",
+    "Location": "South America, Brazil, Africa, Namibia, Asia, China",
+    "Age": "neoproterozoic",
+    "LatLong": "-27.40646 // 16.7378",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2017/02",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Environmental Change",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1863243.373,
+        -3174345.9826
+      ]
+    }
+  },
+  {
+    "Type": "full",
+    "Name": "Barberton Archean Surface Environments, Moodies Group, Barberton Greenstone Belt",
+    "Acronym": "BASE",
+    "Location": "Africa, South Africa, Moodies, Barberton",
+    "Age": "archean",
+    "LatLong": "-25.73312 // 31.0926",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2019/03",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Geodynamic Processes",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3461212.3994,
+        -2966064.0836
+      ]
+    }
+  },
+  {
+    "Type": "half-full",
+    "Name": "The Bushveld Complex Drilling Project",
+    "Acronym": "BVDP",
+    "Location": "Africa, South Africa, Bushveld",
+    "Age": "mid-Paleozoic",
+    "LatLong": "-24 // 28",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2019/04",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Geodynamic Processes",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3116945.7422,
+        -2753408.1094
+      ]
+    }
+  },
+  {
+    "Type": "half-full",
+    "Name": "Volcanic Forcing and Paleogene Climate Change",
+    "Acronym": "PVOLC",
+    "Location": "Limfjorden: Europe, Denmark, Jylland, Harre, Fur",
+    "Age": "paleogene",
+    "LatLong": "56.78343 // 8.93827",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2020/03",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "Environmental Change",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        995003.665,
+        7715981.8643
+      ]
+    }
+  },
+
+
+
+
+
+
+
+
+
+
+  {
+    "Type": "proposal-accepted",
+    "Name": "TEST Full Proposal Accepted",
+    "Acronym": "TEST Full Proposal Accepted",
+    "Location": "Limfjorden: Europe, Denmark, Jylland, Harre, Fur",
+    "Age": "paleogene",
+    "LatLong": "53.3498 // -6.2603",
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2020/03",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        995003.665,
+        7715981.8643
+      ]
+    }
+  },
+  {
+    "Type": "post-operational",
+    "Name": "TEST Post-operational",
+    "Acronym": "TEST Post-operational",
+    "Location": "Limfjorden: Europe, Denmark, Jylland, Harre, Fur",
+    "Age": "paleogene",
+    "LatLong": "45.4215 // -75.6972", 
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2020/03",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        995003.665,
+        7715981.8643
+      ]
+    }
+  },
+  {
+    "Type": "post-moratorial",
+    "Name": "TEST Post-moratorial",
+    "Acronym": "TEST Post-moratorial",
+    "Location": "Limfjorden: Europe, Denmark, Jylland, Harre, Fur",
+    "Age": "paleogene",
+    "LatLong": "23.1136 // -82.3666", 
+    "Info": "(Click the topleft \"i\" button to get a link)",
+    "Link": "https://www.icdp-online.org/index.php?id=2126&no_cache=1&label=ICDP-2020/03",
+    "ZoomIn": "Click 'i', then here",
+    "Theme": "",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        995003.665,
+        7715981.8643
+      ]
+    }
+  }
+]

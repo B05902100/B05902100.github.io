@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <title> GFZ Map </title>
+        <meta charset="UTF-8">
+
+
+        <!-- ///////// Leaflet and Esri area ////////// -->
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin="" />
+            
+        <!-- Leaflet JS; Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        
+        <!-- Load Esri Leaflet from CDN -->
+        <script src="https://unpkg.com/esri-leaflet@3.0.4/dist/esri-leaflet.js"></script>
+        <script src="https://unpkg.com/esri-leaflet-vector@3.0.0/dist/esri-leaflet-vector.js"></script>
+        
+        <!-- ///////// Miscellaneous packages area ////////// -->
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        <!-- mapbox-gl -->
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+        
+        <!-- ///////// Font Awesome area ////////// -->
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- ///////// Marker styles area ////////// -->
+        <!-- CSS for map markers -->
+        <link rel="stylesheet" href="./css/markers.css" />
+
+        <!-- CSS for control markers -->
+        <link rel="stylesheet" href="./css/markers-control.css" />
+    </head>
+    <body>
+        <!-- The map -->
+        <div id="map" style="height: 100%;"></div>
+        <script>
+            let type_to_icon_map = {
+                "workshop": {
+                    // icon: icon_workshop_in_preparation,
+                    icon_style: "workshop_in_preparation_style",
+                    desc: "Workshop concluded / full proposal in preparation for ICDP submission",
+                    fa_icon: "fa-circle-dot",
+                    fa_icon_extra_style: "", // extra style for marker on map
+                    fa_icon_control_extra_style: "", // extra style for marker on control panel 
+                },
+                "half-full": { //<--- going to have to ask about this
+                    // icon: icon_drilling_in_preparation,
+                    icon_style: "drilling_in_preparation_style",
+                    desc: "Drilling scheduled / drilling contracts signed / permits & funds in hand",
+                    fa_icon: "fa-circle-half-stroke",
+                    fa_icon_extra_style: "",
+                    fa_icon_control_extra_style: "",
+                }, 
+                "full": { 
+                    // icon: icon_drilling_in_operation,
+                    icon_style: "drilling_in_operation_style",
+                    desc: "Drilling underway / paused btw. drilling phases / at multiple locations",
+                    fa_icon: "fa-circle",
+                    fa_icon_extra_style: "",
+                    fa_icon_control_extra_style: "",
+                }, 
+                // the three "new" pin styles.
+                "proposal-accepted": { 
+                    // icon: icon_full_proposal_accepted,
+                    icon_style: "full_proposal_accepted_style",
+                    desc: "Full proposal accepted by ICDP / matching funds search commences",
+                    fa_icon: "fa-circle-dot",
+                    fa_icon_extra_style: "",
+                    fa_icon_control_extra_style: "",
+                }, 
+                "post-operational": { 
+                    // icon: icon_post_operational,
+                    icon_style: "post_operational_style",
+                    desc: "On-site activities completed / data & sample available for STM",
+                    fa_icon: "fa-circle",
+                    fa_icon_extra_style: "font-size:10px;margin:17px auto;",
+                    fa_icon_control_extra_style: "font-size:8px;margin:-4px auto;left:-4px",
+                }, 
+                "post-moratorial": { 
+                    // icon: icon_post_moratorial,
+                    icon_style: "post_moratorial_style",
+                    desc: "Reports finalized / sampling party held / sampling opens for non-STM",
+                    fa_icon: "fa-circle",
+                    fa_icon_extra_style: "",
+                    fa_icon_control_extra_style: "",
+                }, 
+            };
+
+            // create Leaflet icons for each type
+            for (let [type, type_data] of Object.entries(type_to_icon_map)) {
+                type_to_icon_map[type]["icon"] = L.divIcon({
+                    className: 'custom-div-icon',
+                    html: `<div class='${type_data.icon_style}'>
+                             <div class='marker-pin'></div>
+                             <i class='fa-solid ${type_data.fa_icon} awesome' style="${type_data.fa_icon_extra_style}"></i>
+                           </div>`,
+                    iconSize: [30, 42],
+                    iconAnchor: [15, 42] // starting from top left corner, the marker's geographical location is: move to the center x and move all the way to the bottom (i.e. where the pin is)
+                });
+            }
+
+            function create_marker_description(location) {
+                return `
+                <b> ${location["Acronym"]} </b> <br />
+                <a href='${location["Link"]}'>${location["Name"]}</a> <br />
+                ICDP Theme: ${location["Theme"]}
+                `
+                ;
+            }
+
+            // partition and process icons based on its type.
+            function partition_icons(locations) {
+                let dict = {};
+                let processed_dict = {};
+                // partition icons
+                locations.forEach(location => {
+                    if (!dict.hasOwnProperty(location["Type"])) dict[location["Type"]] = [];
+                    const coords = location["LatLong"].split("//");
+                    const marker = L.marker(coords, { icon: location.icon })
+                                  .bindPopup(create_marker_description(location), { offset: [0, -15] })
+                                  .bindTooltip(location["Acronym"], {offset: [20,-21]});
+                    marker["raw_data"] = location; // save original data 
+                    dict[location["Type"]].push(marker);
+                });
+
+                // change label on control to HTML 
+                for (const type in dict) {
+                    let type_info = type_to_icon_map[type];
+                    let type_with_HTML = `
+                    <b> Type: ${type} </b>
+                    <div style="">
+                        <div> ${type_info.desc} </div>
+                        <div class="custom-label-control">
+                            <div class='custom-div-icon-control' >
+                                <div class="${type_info.icon_style}" style='position: absolute;'>
+                                    <i class='fa-solid ${type_info.fa_icon} awesome-control' style='${type_info.fa_icon_control_extra_style}'></i>
+                                    <div class='marker-pin-control'></div>
+                                </div>
+                            </div>
+                            <div class="custom-div-icon-control">
+                            </div>
+                        </div>
+                        <div></div>
+                        <hr />
+                    </div>
+                    `;
+                    // additional info at the bottom. Probably should not be hard coded
+                    if (type == "post-moratorial") type_with_HTML += "<div style='font-size:80%'> STM: Science Team Member  </div>";
+                    processed_dict[type_with_HTML] = L.layerGroup(dict[type]);
+                }
+                return processed_dict;
+            }
+
+            // locations of each site.
+            let locations = null;
+            // let get_locations = $.get("icdp_contacts--drillsites-bubbletext.3857-selection.json", function (data) {
+            let get_locations = $.get("TEST_icdp_contacts--drillsites-bubbletext.3857-selection.json", function (data) {
+                locations = data.map((location => {
+                    location["icon"] = type_to_icon_map[location["Type"]].icon;
+                    return location;
+                }));
+            });
+        
+            $.when(get_locations).done(() => {
+                let icon_dictionary = partition_icons(locations);
+
+                // define boundaries of map
+                let southWest = L.latLng(-89.98155760646617, -180, true),
+                    northEast = L.latLng(89.99346179538875, 180);
+                let bounds = L.latLngBounds(southWest, northEast);
+                // setting up map (need to set boundaries instead of using zoom...)
+                let map = L.map('map', {
+                    center: [20,15],
+                    zoom: 3,
+                    minZoom: 2,
+                    maxBounds: bounds,
+                    layers: Object.values(icon_dictionary), 
+                })
+                ;
+                
+                // add layers to control.
+                L.control.layers(null, icon_dictionary, {collapsed: true}).addTo(map);
+
+                // manually set opacity of control to 90%
+                $(".leaflet-right .leaflet-control").css("opacity", "80%");
+                // manually remove the border of the control panel
+                $(".leaflet-control-layers.leaflet-control-layers-expanded.leaflet-control").css("border", "none");
+                $(".leaflet-control-layers.leaflet-control").css("border", "none");
+
+                // https://esri.github.io/esri-leaflet/examples/switching-basemaps.html
+                const apiKey = "AAPK2f32777aba1349e2820e01e45ed91d00WICIJTydXDFEsejpG-pgJ_HTrEtUtu5NskRwA4IZWe2xxQzYSjN-5Q0szmAD6Ni7";
+                // grey map with no labels:
+                // const basemapEnum = "OSM:LightGray:Base";
+                // custom map:
+                // const basemapEnum = "https://basemaps-api.arcgis.com/arcgis/rest/services/styles/d70a37ac73944663b8833bdd6fa79439?type=style&token="+apiKey;
+                const basemapEnum = "d70a37ac73944663b8833bdd6fa79439";
+                L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+                    apiKey: apiKey,
+                }).addTo(map);
+            });
+        </script>
+    </body>
+</html>

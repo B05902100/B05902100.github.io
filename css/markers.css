@@ -1,0 +1,115 @@
+/* do NOT touch these */
+/* The exterior of the pin: 📍 */
+.marker-pin { 
+  width: 40px; /* pin size (original is 3/4 times) */
+  height: 40px; /* pin size (original is 3/4 times) */
+  border-radius: 50% 50% 50% 0;
+  background: #0cce26; /* colour of exterior */
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px; /* pin size (original is 3/4 times) */
+  box-shadow: 4px 4px 3px grey; /* shadow */
+}
+
+/* Interior of the pin (the white circle), remove this for no circle */
+.marker-pin::after { 
+    content: '';
+    width: 32px; /* pin size (original is 3/4 times) */
+    height: 32px; /* pin size (original is 3/4 times) */
+    margin: 4px 0 0 4px; /* pin size (original is 3/4 times) */
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+ }
+
+/* Styles for the icon inside the pin */
+.custom-div-icon i { 
+    position: absolute;
+    /* width: 22px;  left-right direction of icon (can set to 0?)  */
+    /* font-size: 22px; */
+    left: -0.5px;
+    right: 0;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Styles for the font-awesome icon */
+.custom-div-icon i.awesome {
+   margin: 8px auto; /* moves icon up/down */
+   font-size: 26px; /* size of icon */
+}
+/* ^ do NOT touch these */
+
+    
+
+/* colour of exterior (the pin area)  */
+div.workshop_in_preparation_style > .marker-pin {
+    background: #cc0000;
+}
+div.drilling_in_preparation_style > .marker-pin {
+    background: #990000;
+}
+div.drilling_in_operation_style > .marker-pin {
+    background: #ff6633;
+}
+div.full_proposal_accepted_style > .marker-pin {
+    background: #ff9933;
+}
+div.post_operational_style > .marker-pin {
+    background: #660000;
+}
+div.post_moratorial_style > .marker-pin {
+    background: #666666;
+}
+
+/* colour of circle */
+div.workshop_in_preparation_style > .marker-pin::after {
+    background: none;
+} 
+div.drilling_in_preparation_style > .marker-pin::after {
+    background: white;
+} 
+div.drilling_in_operation_style > .marker-pin::after {
+    background: white;
+} 
+div.full_proposal_accepted_style > .marker-pin::after {
+    background: white;
+} 
+div.post_operational_style > .marker-pin::after {
+    background: #660000;
+} 
+div.post_moratorial_style > .marker-pin::after {
+    background: #666666;
+} 
+
+/* colour of font-awesome icon */
+div.workshop_in_preparation_style > i {
+    color: white;
+}
+div.drilling_in_preparation_style > i {
+    color: #990000;
+}
+div.drilling_in_operation_style > i {
+    color: #ff6633;
+}
+div.full_proposal_accepted_style > i {
+    color: #ff9933;
+}
+div.post_operational_style > i {
+    color: white;
+}
+div.post_moratorial_style > i {
+    color: #666666;
+}
+
+
+
+
+
+
+
+
+
+

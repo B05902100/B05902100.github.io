@@ -1,0 +1,101 @@
+/* The exterior of the pin: 📍 */
+.marker-pin-control { 
+  width: 30px; /* pin size (original is 3/4 times) */
+  height: 30px; /* pin size (original is 3/4 times) */
+  border-radius: 50% 50% 50% 0;
+  background: #0cce26; /* colour of exterior */
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px; /* pin size (original is 3/4 times) */
+  box-shadow: 4px 4px 3px grey; /* shadow */
+}
+
+/* Interior of the pin (the white circle), remove this for no circle */
+.marker-pin-control::after { 
+    content: '';
+    width: 24px; /* pin size (original is 3/4 times) */
+    height: 24px; /* pin size (original is 3/4 times) */
+    margin: 3px 0 0 3px; /* pin size (original is 3/4 times) */
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+ }
+
+/* Styles for the icon inside the pin */
+.custom-div-icon-control i { 
+    position: absolute;
+    /* width: 22px;  left-right direction of icon (can set to 0?)  */
+    /* font-size: 22px; */
+    left: -8px;
+    right: 0;
+    margin: 10px auto;
+    text-align: center;
+    z-index: 100;
+}
+
+/* Styles for the font-awesome icon */
+.custom-div-icon-control i.awesome-control {
+   margin: -8px auto; /* moves icon up/down */
+   font-size: 17px; /* size of icon */
+}
+
+/* Styles for placing the pin inside the control panel */
+.custom-label-control {
+    display: flex;
+    width: 100%;
+    margin: 5px 15px 15px 15px;
+}
+
+/* Styles for placing the pin inside the control panel */
+.custom-div-icon-control {
+  flex: 1;
+  /* border: 2px solid blueviolet; */
+  margin: 10px;
+}
+
+
+
+
+
+/* colour of exterior (the pin area)  */
+div.workshop_in_preparation_style > .marker-pin-control {
+    background: #cc0000;
+}
+div.drilling_in_preparation_style > .marker-pin-control {
+    background: #990000;
+}
+div.drilling_in_operation_style > .marker-pin-control {
+    background: #ff6633;
+}
+div.full_proposal_accepted_style > .marker-pin-control {
+    background: #ff9933;
+}
+div.post_operational_style > .marker-pin-control {
+    background: #660000;
+}
+div.post_moratorial_style > .marker-pin-control {
+    background: #666666;
+}
+
+
+/* colour of circle */
+div.workshop_in_preparation_style > .marker-pin-control::after {
+    background: none;
+} 
+div.drilling_in_preparation_style > .marker-pin-control::after {
+    background: white;
+} 
+div.drilling_in_operation_style > .marker-pin-control::after {
+    background: white;
+} 
+div.full_proposal_accepted_style > .marker-pin-control::after {
+    background: white;
+} 
+div.post_operational_style > .marker-pin-control::after {
+    background: #660000;
+} 
+div.post_moratorial_style > .marker-pin-control::after {
+    background: #666666;
+} 
